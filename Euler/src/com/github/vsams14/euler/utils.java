@@ -126,16 +126,11 @@ public class utils {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(new File("primes.txt")));
 			String line;
-			int count=0;
 			while((line=br.readLine()) != null){ //&& count<50){
 				if(hasNum(line)){
 					long p = Long.parseLong(line);
-					//println(p);
-					if(p==228)println(count);
 					primes.add(p);
-					//count++;
 				}
-				count++;
 			}
 			br.close();
 			println("Primes Loaded");
