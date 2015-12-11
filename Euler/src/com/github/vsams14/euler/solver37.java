@@ -17,6 +17,40 @@ public class solver37 {
 	}
 	
 	private void find(){
-		
+		utils.getPrimes();
+		for(long prime:utils.primes){
+			if(prime<10)continue;
+			String s = prime+"";
+			String[] tLeft = new String[s.length()];
+			String[] tRight = new String[s.length()];
+			tLeft[0] = s;
+			tRight[0] = s;
+			//utils.print(s);
+			for(int i=1; i<s.length(); i++){
+				tLeft[i] = truncateLeft(tLeft[i-1]);
+				tRight[i] = truncateRight(tRight[i-1]);
+				//utils.print(":"+tLeft[i]);
+			}
+			int count = 0;
+			//utils.print(":");
+			for(int i=1; i<s.length(); i++){
+				//utils.print(":"+tRight[i]);
+				if(!utils.isPrime(Integer.parseInt(tLeft[i])))break;
+				if(!utils.isPrime(Integer.parseInt(tRight[i])))break;
+				count++;
+			}
+			//utils.println();
+			if(count==s.length()-1){
+				utils.println(s+" is a truncatable prime");
+			}
+		}
+	}
+	
+	private String truncateLeft(String s){
+		return s.substring(1);
+	}
+	
+	private String truncateRight(String s){
+		return s.substring(0, s.length()-1);
 	}
 }

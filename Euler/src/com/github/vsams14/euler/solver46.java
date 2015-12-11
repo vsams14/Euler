@@ -28,7 +28,7 @@ public class solver46 {
 	private void find(){
 		long n = 100000;
 		for(long i=3; i<=n; i+=2)odds.add(i);
-		utils.getPrimes(n);
+		utils.getPrimes();
 		for(long prime:utils.primes){
 			odds.remove(prime);
 			for(long i=1; i<=Math.sqrt((n-prime)/2)+1; i++){

@@ -13,7 +13,7 @@ public class solver41 {
 	}
 	
 	private void find(){
-		utils.getPrimes(7654321L);
+		utils.getPrimes();
 		for(long i = 7654321L; i>1; i--){
 			if(utils.isPan(i+"")){
 					utils.println(i+"");

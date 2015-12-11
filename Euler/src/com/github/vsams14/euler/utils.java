@@ -1,5 +1,10 @@
 package com.github.vsams14.euler;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class utils {
@@ -117,17 +122,37 @@ public class utils {
 		return false;
 	}
 	
-	public static void getPrimes(long n){
-		for(long i=3; i<=n; i+=2)primes.add(i);
-		for(long i=3; i*i<=n; i+=2){
-			//printer.println(i+"");
-			for(long j=3; j*i<=n; j+=2){
-				primes.remove(i*j);
-				//printer.println("Removed "+(i*j));
+	public static void getPrimes(){
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(new File("primes.txt")));
+			String line;
+			int count=0;
+			while((line=br.readLine()) != null){ //&& count<50){
+				if(hasNum(line)){
+					long p = Long.parseLong(line);
+					//println(p);
+					if(p==228)println(count);
+					primes.add(p);
+					//count++;
+				}
+				count++;
 			}
+			br.close();
+			println("Primes Loaded");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		println("Primes Generated");
-		//return primes;
+	}
+	
+	private static boolean hasNum(String s){
+		if(s.contains("1")||s.contains("2")||s.contains("3")
+				||s.contains("4")||s.contains("5")||s.contains("6")||s.contains("7")
+				||s.contains("8")||s.contains("9")||s.contains("0"))return true;
+		return false;
 	}
 	
 	public static boolean isPrime(long test){

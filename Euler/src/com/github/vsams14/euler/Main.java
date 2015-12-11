@@ -1,13 +1,12 @@
 package com.github.vsams14.euler;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Main m = new Main();
-		m.startSolver("37");
+		m.startSolver("50");
 	}
 	
 	private Main(){		
