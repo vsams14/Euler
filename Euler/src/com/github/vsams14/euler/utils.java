@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class utils {
 	public static ArrayList<Long> primes = new ArrayList<Long>();
+	private static long n;
+	
 	public static String getWord(int i){
 		switch(i){
 		case 1: return "one";
@@ -188,6 +190,50 @@ public class utils {
 			return true;
 		}
 		return false;
+	}
+	
+	private static ArrayList<Long> primeFactors(){
+		ArrayList<Long> factors = new ArrayList<Long>();
+		for(long prime:utils.primes){
+			if(n==1)break;
+			if(n%prime==0){
+				n/=prime;
+				factors.add( prime);
+				factors.addAll(primeFactors());
+			}
+		}
+		return factors;
+	}
+	
+	public static ArrayList<Long> getPrimeFact(long f, boolean print){
+		n = f;
+		ArrayList<Long> facts = primeFactors();
+		if(print)printList(facts);
+		return facts;
+	}
+	
+	public static int uniqueFacts(ArrayList<Long> t){
+		int count = 0;
+		@SuppressWarnings("unchecked")
+		ArrayList<Long> copy = (ArrayList<Long>) t.clone();
+		for(long i:t){
+			if(copy.isEmpty())break;
+			if(!copy.contains(i))continue;
+			count++;
+			while(copy.contains(i))copy.remove(i);
+		}
+		return count;
+	}
+	
+	public static int getUniqueFacts(long n){
+		return uniqueFacts(getPrimeFact(n, false));
+	}
+	
+	public static void printList(ArrayList<Long> t){
+		for(long i:t){
+			println(i);
+		}
+		println();
 	}
 	
 	public static long pent(long n){
