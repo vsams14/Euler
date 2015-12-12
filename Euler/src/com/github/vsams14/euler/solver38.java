@@ -21,6 +21,18 @@ public class solver38 {
 	}
 	
 	private void find(){
-		
+		String pan;
+		int mult;
+		for(int a=1; a<10000; a++){
+			mult=1;
+			pan="";
+			while(pan.length()<9){
+				pan+=(a*mult)+"";
+				mult++;
+			}
+			if(pan.length()==9 && utils.isPan(pan)){
+				utils.println(a+"*{1,...,"+(mult-1)+"} = "+pan);
+			}
+		}
 	}
 }
