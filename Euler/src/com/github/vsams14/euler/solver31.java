@@ -223,10 +223,4 @@ public class solver31 {
 		}
 		utils.println(count);
 	}
-	
-	private void printPerm(String s, int[] perm){
-		utils.println(s+perm[0]*200+":"+perm[1]*100+":"+perm[2]*50+":"+ 
-				perm[3]*20+":"+perm[4]*10+":"+perm[5]*5+":"+perm[6]*2+
-				":"+perm[7]*1);
-	}
 }

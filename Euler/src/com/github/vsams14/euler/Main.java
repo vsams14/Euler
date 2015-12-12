@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Main m = new Main();
-		m.startSolver("31");
+		m.startSolver("38");
 	}
 	
 	private Main(){		
