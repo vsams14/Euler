@@ -29,7 +29,6 @@ public class solver18 {
 			for(int c=0; c<data[r].length-1; c++){
 				data[r-1][c]+=Math.max(data[r][c], data[r][c+1]);
 			}
-			utils.println();
 		}
 		utils.println(data[0][0]+"");
 	}
