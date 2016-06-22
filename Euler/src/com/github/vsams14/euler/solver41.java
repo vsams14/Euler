@@ -14,7 +14,7 @@ public class solver41 {
 	
 	private void find(){
 		utils.getPrimes();
-		for(long i = 7654321L; i>1; i--){
+		for(int i = 7654321; i>1; i--){
 			if(utils.isPan(i+"")){
 					utils.println(i+"");
 				if(utils.isPrime(i)){

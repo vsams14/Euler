@@ -20,9 +20,10 @@ public class solver50 {
 	
 	private void find(){
 		utils.getPrimes();
+		utils.putPrimesToList(0);
 		int maxCons = 0;
 		long maxPrime = 0;
-		for(long prime:utils.primes){
+		for(int prime:utils.primes){
 			int n = sumOfPrimes(prime);
 			if(n>0){
 				if(n>maxCons){
@@ -35,7 +36,7 @@ public class solver50 {
 		utils.println(maxPrime+" is sum of "+maxCons+" consecutive primes");
 	}
 	
-	private int sumOfPrimes(long n){
+	private int sumOfPrimes(int n){
 		int max = utils.primes.indexOf(n);
 		int start = 0;
 		int pos;

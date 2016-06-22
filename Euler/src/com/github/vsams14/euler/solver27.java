@@ -41,7 +41,7 @@ public class solver27 {
 		}
 	}
 	
-	private long formula(int a, int b, int n){
+	private int formula(int a, int b, int n){
 		return n*n+a*n+b;
 	}
 }

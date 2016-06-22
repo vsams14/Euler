@@ -1,15 +1,12 @@
 package com.github.vsams14.euler;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class utils {
-	public static ArrayList<Long> primes = new ArrayList<Long>();
+	private static int arPrimes[] = new int[100000001];
+	public static ArrayList<Integer> primes = new ArrayList<Integer>();
 	private static long n;
+	public static long startTime;
 	
 	public static String getWord(int i){
 		switch(i){
@@ -125,26 +122,56 @@ public class utils {
 	}
 	
 	public static void getPrimes(){
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("primes.txt")));
-			String line;
-			while((line=br.readLine()) != null){ //&& count<50){
-				if(hasNum(line)){
-					long p = Long.parseLong(line);
-					primes.add(p);
+		int limit = 50000000;
+		int cp[] = new int[limit+1];
+		for(int i=1;i<=limit;i++){
+			cp[i]=i;
+			arPrimes[i]=0;
+		}
+		for(int i=limit+1;i<=2*limit;i++){
+			arPrimes[i]=0;
+		}
+		for(int i=1;i<=limit/2;i++){
+			for(int j=1;j<=(limit-i)/(2*i+1);j++){
+				int nprime = i+j+2*i*j;
+				if(cp[nprime]!=0){
+					cp[nprime]=0;
 				}
 			}
-			br.close();
-			println("Primes Loaded");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		
+		for(int i=1;i<=limit;i++){
+			if(cp[i]!=0){
+				arPrimes[2*i+1]=2*i+1;
+			}
+		}
+		arPrimes[2]=2;
+		println("Primes Generated");
+		startTime = System.currentTimeMillis();;
 	}
 	
+	public static void putPrimesToList(int sel){//0:small 1:medium 2:large
+		int limit=0;
+		switch(sel){
+		case 0:
+			limit=1000000;
+			break;
+		case 1:
+			limit=50000000;
+			break;
+		case 2:
+			limit=100000000;
+		}
+		for(int i:arPrimes){
+			if(i!=0 && i<limit){
+				primes.add(i);
+			}
+		}
+		println("Primes in list");
+		startTime = System.currentTimeMillis();
+	}
+	
+	@SuppressWarnings("unused")
 	private static boolean hasNum(String s){
 		if(s.contains("1")||s.contains("2")||s.contains("3")
 				||s.contains("4")||s.contains("5")||s.contains("6")||s.contains("7")
@@ -152,8 +179,8 @@ public class utils {
 		return false;
 	}
 	
-	public static boolean isPrime(long test){
-		if(primes.contains(test))return true;
+	public static boolean isPrime(int test){
+		if(test>0&&arPrimes[test]!=0)return true;
 		return false;
 	}
 	

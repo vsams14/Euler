@@ -14,10 +14,11 @@ public class solver35 {
 	
 	private void find(){
 		utils.getPrimes();
+		utils.putPrimesToList(0);
 		String rot;
 		int count = 0;
 		boolean isCirc = false;
-		for(long prime:utils.primes){
+		for(int prime:utils.primes){
 			if(prime<10){
 				count++;
 				utils.println(prime);
@@ -26,7 +27,7 @@ public class solver35 {
 			rot = prime+"";
 			for(int i=0; i<rot.length()-1; i++){
 				rot = ccwRotate(rot);
-				if(utils.isPrime(Long.parseLong(rot))){
+				if(utils.isPrime(Integer.parseInt(rot))){
 					isCirc=true;
 				}else{
 					isCirc=false;

@@ -16,10 +16,11 @@ public class solver49 {
 	
 	private void find(){
 		utils.getPrimes();
-		long a, b, prime;
-		for(int j=utils.primes.indexOf(1009L); j<utils.primes.indexOf(9973L); j++){
+		utils.putPrimesToList(0);
+		int a, b, prime;
+		for(int j=utils.primes.indexOf(1009); j<utils.primes.indexOf(9973); j++){
 			a=utils.primes.get(j);
-			for(int i=j+1; i<utils.primes.indexOf(9973L); i++){
+			for(int i=j+1; i<utils.primes.indexOf(9973); i++){
 				prime = utils.primes.get(i);
 				b=2*prime-a;
 				if(b>9999)break;

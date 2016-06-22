@@ -5,11 +5,11 @@ import java.lang.reflect.InvocationTargetException;
 public class Main {
 
 	public static void main(String[] args) {
-		long startTime = System.currentTimeMillis();
+		utils.startTime = System.currentTimeMillis();
 		Main m = new Main();
-		m.startSolver("0");
+		m.startSolver("27");
 		long endTime = System.currentTimeMillis();
-		System.out.println("Took "+(endTime - startTime) + " ms"); 
+		System.out.println("Took "+(endTime - utils.startTime) + " ms"); 
 	}
 	
 	private Main(){		
