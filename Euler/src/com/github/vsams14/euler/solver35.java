@@ -13,7 +13,6 @@ public class solver35 {
 	}
 	
 	private void find(){
-		utils.getPrimes();
 		utils.putPrimesToList(0);
 		String rot;
 		int count = 0;

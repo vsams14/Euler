@@ -29,7 +29,6 @@ public class solver27 {
 	}
 	
 	private void find(){
-		utils.getPrimes();
 		for(int i=-999; i<1000; i++){
 			for(int j=-999; j<1000; j++){
 				int n = 0;

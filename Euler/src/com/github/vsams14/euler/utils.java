@@ -1,5 +1,6 @@
 package com.github.vsams14.euler;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class utils {
@@ -121,7 +122,7 @@ public class utils {
 		return false;
 	}
 	
-	public static void getPrimes(){
+	private static void getPrimes(){
 		int limit = 50000000;
 		int cp[] = new int[limit+1];
 		for(int i=1;i<=limit;i++){
@@ -151,6 +152,7 @@ public class utils {
 	}
 	
 	public static void putPrimesToList(int sel){//0:small 1:medium 2:large
+		getPrimes();
 		int limit=0;
 		switch(sel){
 		case 0:
@@ -179,8 +181,47 @@ public class utils {
 		return false;
 	}
 	
+	private static int[] sdBreakup(double test){
+		int sd[] = new int[2];
+		sd[0]=0;
+		sd[1]=0;
+		test--;
+		while(test/(int)test == 1){
+			test/=2.0;
+			sd[0]++;
+		}
+		sd[0]--;
+		sd[1]=(int) (test*2);
+		return sd;
+	}
+	
+	//deterministic using a=2,3,5,7 up to 3215031751 > 2^31-1
 	public static boolean isPrime(int test){
-		if(test>0&&arPrimes[test]!=0)return true;
+		int sd[] = sdBreakup(test);
+		//replace with a from 2 to 2ln(n)^2
+		if(modTest(2,sd,test)){
+			if(modTest(13,sd,test)){
+				if(modTest(17,sd,test)){
+					if(modTest(37,sd,test)){
+						if(modTest(61,sd,test)){
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	private static boolean modTest(int a, int[] sd, int test){
+		for(int r=0;r<sd[0];r++){
+			int power = sd[1] * (int) Math.pow(2, r);
+			BigInteger big = new BigInteger(a+"");
+			big = big.modPow(new BigInteger(power+""), new BigInteger(test+""));
+			if (big.toString().equals("1")||big.toString().equals(test-1+"")){
+				return true;
+			}
+		}
 		return false;
 	}
 	

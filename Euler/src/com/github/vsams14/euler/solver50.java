@@ -19,7 +19,6 @@ public class solver50 {
 	}
 	
 	private void find(){
-		utils.getPrimes();
 		utils.putPrimesToList(0);
 		int maxCons = 0;
 		long maxPrime = 0;

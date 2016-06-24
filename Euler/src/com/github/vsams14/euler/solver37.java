@@ -17,7 +17,7 @@ public class solver37 {
 	}
 	
 	private void find(){
-		utils.getPrimes();
+		utils.putPrimesToList(0);
 		for(long prime:utils.primes){
 			if(prime<10)continue;
 			String s = prime+"";

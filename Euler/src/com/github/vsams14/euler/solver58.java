@@ -6,25 +6,23 @@ public class solver58 {
 	}
 
 	private void find() {
-		utils.getPrimes();
-		float primes = 5;
-		float diags = 9;
-		int length = 5;
-		while (primes / diags > 0.1) {
+		utils.putPrimesToList(2);
+		float primes = 3;
+		int length = 2;
+		int corner = 9;
+		while (primes / (2*length-1) > 0.10) {
 			length += 2;
-			int corner = (length * length);
-			length--;
-			diags += 4;
 			for(int i=1;i<4;i++){
-				if(utils.isPrime(corner-i*length)){
+				corner+=length;
+				utils.println("testing "+corner);
+				if(utils.isPrime(corner)){
 					primes++;
-					utils.println(corner-i*length + " is prime");
 				}
 			}
-			length++;
+			corner += length;
 		}
-		utils.println("Spiral of length " + length + " has " + (int)primes
-				+ " primes and " + (int)diags + " diagonals ("
-				+ primes / diags + ")");
+		utils.println("Spiral of length " + (length+1) + " has " + (int)primes
+				+ " primes and " + (2*length-1) + " diagonals ("
+				+ primes / (2*length-1) + ")");
 	}
 }

@@ -20,7 +20,7 @@ public class solver47 {
 	}
 	
 	private void find(){
-		utils.getPrimes();
+		utils.putPrimesToList(0);
 		long a=210,b,c,d;
 		boolean solved=false;
 		while(!solved){

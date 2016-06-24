@@ -15,7 +15,6 @@ public class solver49 {
 	}
 	
 	private void find(){
-		utils.getPrimes();
 		utils.putPrimesToList(0);
 		int a, b, prime;
 		for(int j=utils.primes.indexOf(1009); j<utils.primes.indexOf(9973); j++){
