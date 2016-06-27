@@ -19,7 +19,7 @@ public class solver50 {
 	}
 	
 	private void find(){
-		utils.putPrimesToList(0);
+		utils.putPrimesToList(1000000);
 		int maxCons = 0;
 		long maxPrime = 0;
 		for(int prime:utils.primes){

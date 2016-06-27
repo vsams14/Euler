@@ -6,7 +6,6 @@ public class solver58 {
 	}
 
 	private void find() {
-		utils.putPrimesToList(2);
 		float primes = 3;
 		int length = 2;
 		int corner = 9;
@@ -14,7 +13,6 @@ public class solver58 {
 			length += 2;
 			for(int i=1;i<4;i++){
 				corner+=length;
-				utils.println("testing "+corner);
 				if(utils.isPrime(corner)){
 					primes++;
 				}

@@ -13,7 +13,7 @@ public class solver35 {
 	}
 	
 	private void find(){
-		utils.putPrimesToList(0);
+		utils.putPrimesToList(1000000);
 		String rot;
 		int count = 0;
 		boolean isCirc = false;
