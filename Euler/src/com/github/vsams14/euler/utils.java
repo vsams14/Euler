@@ -318,9 +318,9 @@ public class utils {
 		return false;
 	}
 
-	private static ArrayList<Long> primeFactors() {
-		ArrayList<Long> factors = new ArrayList<Long>();
-		for (long prime : primes) {
+	private static ArrayList<Integer> primeFactors() {
+		ArrayList<Integer> factors = new ArrayList<Integer>();
+		for (int prime : primes) {
 			if (n == 1)
 				break;
 			if (n % prime == 0) {
@@ -332,18 +332,18 @@ public class utils {
 		return factors;
 	}
 
-	public static ArrayList<Long> getPrimeFact(long f, boolean print) {
+	public static ArrayList<Integer> getPrimeFact(long f, boolean print) {
 		n = f;
-		ArrayList<Long> facts = primeFactors();
+		ArrayList<Integer> facts = primeFactors();
 		if (print)
 			printList(facts);
 		return facts;
 	}
 
-	public static int uniqueFacts(ArrayList<Long> t) {
+	public static int uniqueFacts(ArrayList<Integer> t) {
 		int count = 0;
 		@SuppressWarnings("unchecked")
-		ArrayList<Long> copy = (ArrayList<Long>) t.clone();
+		ArrayList<Integer> copy = (ArrayList<Integer>) t.clone();
 		for (long i : t) {
 			if (copy.isEmpty())
 				break;
@@ -360,7 +360,7 @@ public class utils {
 		return uniqueFacts(getPrimeFact(n, false));
 	}
 
-	public static void printList(ArrayList<Long> t) {
+	public static void printList(ArrayList<Integer> t) {
 		for (long i : t) {
 			println(i);
 		}

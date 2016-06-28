@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		utils.startTime = System.currentTimeMillis();
 		Main m = new Main();
-		m.startSolver("58");
+		m.startSolver("57");
 		long endTime = System.currentTimeMillis();
 		System.out.println("Took "+(endTime - utils.startTime) + " ms"); 
 	}
