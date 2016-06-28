@@ -7,21 +7,31 @@ public class Main {
 	public static void main(String[] args) {
 		utils.startTime = System.currentTimeMillis();
 		Main m = new Main();
-		m.startSolver("57");
+		m.startSolver("092");
 		long endTime = System.currentTimeMillis();
-		System.out.println("Took "+(endTime - utils.startTime) + " ms"); 
+		long time = endTime - utils.startTime;
+		if (time < 1000) {
+			System.out.println("Took " + time + " ms");
+		} else {
+			time /= 1000;
+			System.out.println("Took " + time + " s");
+		}
+
 	}
-	
-	private Main(){		
+
+	private Main() {
 	}
-	
-	private void startSolver(String s){
+
+	private void startSolver(String s) {
 		try {
-			Class.forName("com.github.vsams14.euler.solver"+s).getConstructor().newInstance();
+			Class.forName("com.github.vsams14.euler.solver" + s)
+					.getConstructor().newInstance();
 		} catch (ClassNotFoundException e) {
-			utils.println("Class com.github.vsams14.euler.solver"+s+" does not exist!");
+			utils.println("Class com.github.vsams14.euler.solver" + s
+					+ " does not exist!");
 		} catch (NoSuchMethodException e) {
-			utils.println("Class com.github.vsams14.euler.solver"+s+" does not have a constructor!");
+			utils.println("Class com.github.vsams14.euler.solver" + s
+					+ " does not have a constructor!");
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
@@ -32,6 +42,6 @@ public class Main {
 			e.printStackTrace();
 		} catch (SecurityException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 }

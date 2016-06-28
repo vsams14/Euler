@@ -147,36 +147,41 @@ public class utils {
 	public static boolean isPan(String s) {
 		switch (s.length()) {
 		case 9: {
-			if (s.contains("1") && s.contains("2") && s.contains("3") && s.contains("4") && s.contains("5")
-					&& s.contains("6") && s.contains("7") && s.contains("8") && s.contains("9"))
+			if (s.contains("1") && s.contains("2") && s.contains("3")
+					&& s.contains("4") && s.contains("5") && s.contains("6")
+					&& s.contains("7") && s.contains("8") && s.contains("9"))
 				return true;
 			break;
 		}
 		case 8: {
-			if (s.contains("1") && s.contains("2") && s.contains("3") && s.contains("4") && s.contains("5")
-					&& s.contains("6") && s.contains("7") && s.contains("8"))
+			if (s.contains("1") && s.contains("2") && s.contains("3")
+					&& s.contains("4") && s.contains("5") && s.contains("6")
+					&& s.contains("7") && s.contains("8"))
 				return true;
 			break;
 		}
 		case 7: {
-			if (s.contains("1") && s.contains("2") && s.contains("3") && s.contains("4") && s.contains("5")
-					&& s.contains("6") && s.contains("7"))
+			if (s.contains("1") && s.contains("2") && s.contains("3")
+					&& s.contains("4") && s.contains("5") && s.contains("6")
+					&& s.contains("7"))
 				return true;
 			break;
 		}
 		case 6: {
-			if (s.contains("1") && s.contains("2") && s.contains("3") && s.contains("4") && s.contains("5")
-					&& s.contains("6"))
+			if (s.contains("1") && s.contains("2") && s.contains("3")
+					&& s.contains("4") && s.contains("5") && s.contains("6"))
 				return true;
 			break;
 		}
 		case 5: {
-			if (s.contains("1") && s.contains("2") && s.contains("3") && s.contains("4") && s.contains("5"))
+			if (s.contains("1") && s.contains("2") && s.contains("3")
+					&& s.contains("4") && s.contains("5"))
 				return true;
 			break;
 		}
 		case 4: {
-			if (s.contains("1") && s.contains("2") && s.contains("3") && s.contains("4"))
+			if (s.contains("1") && s.contains("2") && s.contains("3")
+					&& s.contains("4"))
 				return true;
 			break;
 		}
@@ -195,7 +200,7 @@ public class utils {
 	}
 
 	public static void putPrimesToList(int limit) {
-		if(limit>1000000){
+		if (limit > 1000000) {
 			println("Limit rejected");
 			return;
 		}
@@ -222,7 +227,7 @@ public class utils {
 		println("Primes In List");
 		startTime = System.currentTimeMillis();
 	}
-	
+
 	private static int[] sdBreakup(double test) {
 		int sd[] = new int[2];
 		sd[0] = 0;
@@ -256,18 +261,20 @@ public class utils {
 	private static boolean modTest(int a, int[] sd, int test) {
 		BigInteger big = new BigInteger(a + "");
 		big = big.modPow(new BigInteger(sd[1] + ""), new BigInteger(test + ""));
-		if (big.toString().equals("1") || modTest2(a,sd,test)) { //if a^d mod n = 1 or a^((2^r)*d) mod n=-1
+		if (big.toString().equals("1") || modTest2(a, sd, test)) {
+			// if a^d mod n = 1 or a^((2^r)*d) mod n=-1
 			return true;
 		}
-		
+
 		return false;
 	}
-	
-	private static boolean modTest2(int a, int[] sd, int test){
+
+	private static boolean modTest2(int a, int[] sd, int test) {
 		for (int r = 0; r < sd[0]; r++) {
 			int power = sd[1] * (int) Math.pow(2, r);
 			BigInteger big = new BigInteger(a + "");
-			big = big.modPow(new BigInteger(power + ""), new BigInteger(test + ""));
+			big = big.modPow(new BigInteger(power + ""),
+					new BigInteger(test + ""));
 			if (big.toString().equals(test - 1 + "")) {
 				return true;
 			}
@@ -277,8 +284,10 @@ public class utils {
 
 	@SuppressWarnings("unused")
 	private static boolean hasNum(String s) {
-		if (s.contains("1") || s.contains("2") || s.contains("3") || s.contains("4") || s.contains("5")
-				|| s.contains("6") || s.contains("7") || s.contains("8") || s.contains("9") || s.contains("0"))
+		if (s.contains("1") || s.contains("2") || s.contains("3")
+				|| s.contains("4") || s.contains("5") || s.contains("6")
+				|| s.contains("7") || s.contains("8") || s.contains("9")
+				|| s.contains("0"))
 			return true;
 		return false;
 	}
@@ -296,7 +305,8 @@ public class utils {
 
 	public static boolean isPalindrome(String s) {
 		for (int i = 0; i < s.length() / 2; i++) {
-			if (!s.substring(i, i + 1).equals(s.substring(s.length() - (i + 1), s.length() - i)))
+			if (!s.substring(i, i + 1)
+					.equals(s.substring(s.length() - (i + 1), s.length() - i)))
 				return false;
 		}
 		return true;
