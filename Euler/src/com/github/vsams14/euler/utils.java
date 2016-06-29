@@ -242,10 +242,11 @@ public class utils {
 		return sd;
 	}
 
-	// deterministic using a=2,13,17,37 up to 3215031751 > 2^31-1
+	// deterministic using a=2,3,5,7 up to 3215031751 > 2^31-1
 	public static boolean isPrime(int test) {
+		if (test == 2)
+			return true;
 		int sd[] = sdBreakup(test);
-		// replace with a from 2 to 2ln(n)^2
 		if (modTest(2, sd, test)) {
 			if (modTest(3, sd, test)) {
 				if (modTest(5, sd, test)) {
@@ -259,6 +260,8 @@ public class utils {
 	}
 
 	private static boolean modTest(int a, int[] sd, int test) {
+		if (a == test)
+			return true;
 		BigInteger big = new BigInteger(a + "");
 		big = big.modPow(new BigInteger(sd[1] + ""), new BigInteger(test + ""));
 		if (big.toString().equals("1") || modTest2(a, sd, test)) {
