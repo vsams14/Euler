@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		utils.startTime = System.currentTimeMillis();
 		Main m = new Main();
-		m.startSolver("099");
+		m.startSolver("067");
 		long endTime = System.currentTimeMillis();
 		long time = endTime - utils.startTime;
 		if (time < 1000) {
